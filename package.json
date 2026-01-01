@@ -1,0 +1,17 @@
+{
+  "name": "cr-payment",
+  "version": "1.0.0",
+  "description": "When you're ready, start your application by running: `docker compose up --build`.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "redis": "^5.10.0"
+  }
+}
