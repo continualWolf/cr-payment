@@ -21,6 +21,7 @@ async function initRedis() {
 
       await subscriber.subscribe('bookingCompleted', async (message) => {
         try {
+          console.log("picked up bookingCompleted event")
           await handleBookingCompletedEvent(message);
         } catch (err) {
           console.error('Error handling bookingCompleted event:', err);
@@ -45,18 +46,10 @@ async function initRedis() {
  * Handle booking completed event
  */
 async function handleBookingCompletedEvent(message) {
-  let data;
 
-  try {
-    data = JSON.parse(message);
-  } catch {
-    console.error('Invalid message format:', message);
-    return;
-  }
+  const { price, cardNumber, expiry, cvv } = message;
 
-  const { price, cardNumber, expiry, cvv } = data;
-
-  console.log('Processing payment:', { price });
+  console.log('Processing payment');
 
   // POC: pretend payment succeeds
   if (!client?.isOpen) {
